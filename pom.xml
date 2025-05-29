@@ -8,52 +8,31 @@
 		<version>3.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.codemakers</groupId>
-	<artifactId>commons</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>multi-acueducto-common</name>
+	<groupId>com.codemakers.commons</groupId>
+	<artifactId>multi-acueductos-commons</artifactId>
+	<version>0.0.1</version>
+	<name>multi-acueductos-common</name>
 	<description>App for aqueducts</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
 		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 		
 		<dependency>
@@ -73,6 +52,22 @@
 			<artifactId>lombok-mapstruct-binding</artifactId>
 			<version>0.2.0</version>
 			<scope>provided</scope> 
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>jakarta.persistence</groupId>
+		    <artifactId>jakarta.persistence-api</artifactId>
+		    <version>3.1.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-commons</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -104,5 +99,11 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	
+	<repositories>
+		<repository>
+			<id>commons</id>
+			<url>file:///${project.basedir}/src/main/resources/maven-repository</url>
+		</repository>
+	</repositories>
 </project>

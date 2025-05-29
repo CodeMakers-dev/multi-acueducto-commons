@@ -57,7 +57,7 @@ public class TipoDocumentoEntity implements Serializable {
 	@Column(name = "nombre")
 	private String nombre;
 	
-	@Basic(optional = false)
+	@Basic(optional = true)
 	@Column(name = "descripcion")
 	private String descripcion;
 	

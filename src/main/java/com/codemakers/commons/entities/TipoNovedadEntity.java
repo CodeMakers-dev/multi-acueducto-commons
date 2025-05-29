@@ -16,6 +16,8 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -53,11 +55,15 @@ public class TipoNovedadEntity implements Serializable {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Basic(optional = false)
-	@Column(name = "nombre")
-	private String nombre;
+	@JoinColumn(name = "id_persona", referencedColumnName = "id")
+	@ManyToOne
+	private PersonaEntity persona;
 	
 	@Basic(optional = false)
+	@Column(name = "novedad")
+	private String novedad;
+	
+	@Basic(optional = true)
 	@Column(name = "descripcion")
 	private String descripcion;
 	

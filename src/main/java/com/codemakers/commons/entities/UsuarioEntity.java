@@ -16,6 +16,8 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -26,7 +28,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- *          Clase Entity de tipo (TipoContador) que representa un registro de
+ *          Clase Entity de tipo (Usuario) que representa un registro de
  *          la BD. Cada instancia de esta entidad representa un registro de la
  *          BD. Cada atributo representa una columna de la BD. Los métodos de
  *          esta clase se usan para manipular los datos. (Anotación @Data)
@@ -41,9 +43,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "tipo_contador", schema = "configuracion")
+@Table(name = "usuario", schema = "seguridad")
 @EntityListeners(AuditingEntityListener.class)
-public class TipoContadorEntity implements Serializable {
+public class UsuarioEntity implements Serializable {
 
 	public static final long serialVersionUID = 1L;
 
@@ -53,13 +55,21 @@ public class TipoContadorEntity implements Serializable {
 	@Column(name = "id")
 	private Integer id;
 	
+	@JoinColumn(name = "id_rol", referencedColumnName = "id")
+	@ManyToOne
+	private RolEntity rol;
+	
 	@Basic(optional = false)
 	@Column(name = "nombre")
 	private String nombre;
 	
+	@Basic(optional = false)
+	@Column(name = "contrasena")
+	private String contrasena;
+	
 	@Basic(optional = true)
-	@Column(name = "descripcion")
-	private String descripcion;
+	@Column(name = "imagen")
+	private byte[] imagen;
 	
 	@Basic(optional = false)
 	@Column(name = "activo",nullable = false)

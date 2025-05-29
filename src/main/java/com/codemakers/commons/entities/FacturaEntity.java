@@ -16,6 +16,9 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -26,7 +29,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- *          Clase Entity de tipo (TipoContador) que representa un registro de
+ *          Clase Entity de tipo (Factura) que representa un registro de
  *          la BD. Cada instancia de esta entidad representa un registro de la
  *          BD. Cada atributo representa una columna de la BD. Los métodos de
  *          esta clase se usan para manipular los datos. (Anotación @Data)
@@ -41,9 +44,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "tipo_contador", schema = "configuracion")
+@Table(name = "factrua", schema = "public")
 @EntityListeners(AuditingEntityListener.class)
-public class TipoContadorEntity implements Serializable {
+public class FacturaEntity implements Serializable {
 
 	public static final long serialVersionUID = 1L;
 
@@ -53,13 +56,45 @@ public class TipoContadorEntity implements Serializable {
 	@Column(name = "id")
 	private Integer id;
 	
+	@JoinColumn(name = "empresa_cliente_contador", referencedColumnName = "id")
+	@OneToOne
+	private EmpresaClienteContadorEntity empresaClienteContador;
+	
+	@JoinColumn(name = "id_tarifa", referencedColumnName = "id")
+	@ManyToOne
+	private TarifaEntity tarifa;
+	
+	@JoinColumn(name = "id_lectura", referencedColumnName = "id")
+	@OneToOne
+	private LecturaEntity lectura;
+	
+	@JoinColumn(name = "id_tipo_pago", referencedColumnName = "id")
+	@OneToOne
+	private TipoPagoEntity tipoPago;
+	
+	@JoinColumn(name = "id_estado", referencedColumnName = "id")
+	@OneToOne
+	private EstadoEntity estado;
+	
 	@Basic(optional = false)
-	@Column(name = "nombre")
-	private String nombre;
+	@Column(name = "fecha_emision")
+	private Date fechaEmision;
+	
+	@Basic(optional = false)
+	@Column(name = "fecha_fin")
+	private Date fechaFin;
+	
+	@Basic(optional = false)
+	@Column(name = "consumo")
+	private Integer consumo;
 	
 	@Basic(optional = true)
-	@Column(name = "descripcion")
-	private String descripcion;
+	@Column(name = "precio")
+	private Double precio;
+	
+	@Basic(optional = false)
+	@Column(name = "codigo")
+	private String codigo;
 	
 	@Basic(optional = false)
 	@Column(name = "activo",nullable = false)

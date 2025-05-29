@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- *          Clase Entity de tipo (TipoContador) que representa un registro de
+ *          Clase Entity de tipo (Corregimiento) que representa un registro de
  *          la BD. Cada instancia de esta entidad representa un registro de la
  *          BD. Cada atributo representa una columna de la BD. Los métodos de
  *          esta clase se usan para manipular los datos. (Anotación @Data)
@@ -41,9 +41,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "tipo_contador", schema = "configuracion")
+@Table(name = "ciudad", schema = "public")
 @EntityListeners(AuditingEntityListener.class)
-public class TipoContadorEntity implements Serializable {
+public class CorregimientoEntity implements Serializable {
 
 	public static final long serialVersionUID = 1L;
 
@@ -56,10 +56,6 @@ public class TipoContadorEntity implements Serializable {
 	@Basic(optional = false)
 	@Column(name = "nombre")
 	private String nombre;
-	
-	@Basic(optional = true)
-	@Column(name = "descripcion")
-	private String descripcion;
 	
 	@Basic(optional = false)
 	@Column(name = "activo",nullable = false)

@@ -16,6 +16,8 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -26,7 +28,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- *          Clase Entity de tipo (TipoContador) que representa un registro de
+ *          Clase Entity de tipo (VigenciaUsuario) que representa un registro de
  *          la BD. Cada instancia de esta entidad representa un registro de la
  *          BD. Cada atributo representa una columna de la BD. Los métodos de
  *          esta clase se usan para manipular los datos. (Anotación @Data)
@@ -41,9 +43,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "tipo_contador", schema = "configuracion")
+@Table(name = "vigencia_usuario", schema = "seguridad")
 @EntityListeners(AuditingEntityListener.class)
-public class TipoContadorEntity implements Serializable {
+public class VigenciaUsuarioEntity implements Serializable {
 
 	public static final long serialVersionUID = 1L;
 
@@ -53,13 +55,17 @@ public class TipoContadorEntity implements Serializable {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Basic(optional = false)
-	@Column(name = "nombre")
-	private String nombre;
+	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
+	@ManyToOne
+	private UsuarioEntity usuario;
 	
-	@Basic(optional = true)
-	@Column(name = "descripcion")
-	private String descripcion;
+	@Basic(optional = false)
+	@Column(name = "llave")
+	private String token;
+	
+	@Basic(optional = false)
+	@Column(name = "fecha_vigencia")
+	private Date fechaVigencia;
 	
 	@Basic(optional = false)
 	@Column(name = "activo",nullable = false)
@@ -86,4 +92,8 @@ public class TipoContadorEntity implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@LastModifiedDate
 	private Date fechaModificacion;
+	
+	public boolean isTokenVigente() {
+        return new Date().before(this.fechaVigencia);
+    }
 }
