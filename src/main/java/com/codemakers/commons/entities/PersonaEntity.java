@@ -59,10 +59,6 @@ public class PersonaEntity implements Serializable {
 	@OneToOne
 	private DireccionEntity direccion;
 	
-	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
-	@OneToOne
-	private UsuarioEntity usuario;
-	
 	@JoinColumn(name = "id_tipo_documento", referencedColumnName = "id")
 	@OneToOne
 	private TipoDocumentoEntity tipoDocumento;

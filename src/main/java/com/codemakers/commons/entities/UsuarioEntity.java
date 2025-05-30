@@ -18,6 +18,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -58,6 +59,10 @@ public class UsuarioEntity implements Serializable {
 	@JoinColumn(name = "id_rol", referencedColumnName = "id")
 	@ManyToOne
 	private RolEntity rol;
+	
+	@JoinColumn(name = "id_persona", referencedColumnName = "id")
+	@OneToOne
+	private PersonaEntity persona;
 	
 	@Basic(optional = false)
 	@Column(name = "nombre")

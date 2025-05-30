@@ -17,7 +17,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- *          Clase Entity de tipo (VigenciaUsuario) que representa un registro de
+ *          Clase Entity de tipo (RutaEmpleado) que representa un registro de
  *          la BD. Cada instancia de esta entidad representa un registro de la
  *          BD. Cada atributo representa una columna de la BD. Los métodos de
  *          esta clase se usan para manipular los datos. (Anotación @Data)
@@ -43,9 +43,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "vigencia_usuario", schema = "seguridad")
+@Table(name = "ruta_empleado", schema = "public")
 @EntityListeners(AuditingEntityListener.class)
-public class VigenciaUsuarioEntity implements Serializable {
+public class RutaEmpleadoEntity implements Serializable {
 
 	public static final long serialVersionUID = 1L;
 
@@ -55,17 +55,9 @@ public class VigenciaUsuarioEntity implements Serializable {
 	@Column(name = "id")
 	private Integer id;
 	
-	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
-	@ManyToOne
-	private UsuarioEntity usuario;
-	
-	@Basic(optional = false)
-	@Column(name = "llave")
-	private String token;
-	
-	@Basic(optional = false)
-	@Column(name = "fecha_vigencia")
-	private Date fechaVigencia;
+	@JoinColumn(name = "id_empresa_cliente_contador", referencedColumnName = "id")
+	@OneToOne
+	private EmpresaClienteContadorEntity cliente;
 	
 	@Basic(optional = false)
 	@Column(name = "activo",nullable = false)
@@ -92,8 +84,4 @@ public class VigenciaUsuarioEntity implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@LastModifiedDate
 	private Date fechaModificacion;
-	
-	public boolean isTokenVigente() {
-        return new Date().before(this.fechaVigencia);
-    }
 }

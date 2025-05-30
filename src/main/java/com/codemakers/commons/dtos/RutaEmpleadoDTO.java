@@ -3,8 +3,7 @@ package com.codemakers.commons.dtos;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.codemakers.commons.entities.UsuarioEntity;
-
+import com.codemakers.commons.entities.EmpresaClienteContadorEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +13,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- * Clase DTO que permite encapsular los datos de un objeto de tipo (VigenciaUsuarioEntity).
+ * Clase DTO que permite encapsular los datos de un objeto de tipo (RutaEmpleadoEntity).
  * Este DTO tiene varias ventajas como: 
  * Bajo acoplamiento entre las capaz de la aplicación
  * Optimización de la transferencia de datos.
@@ -26,17 +25,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class VigenciaUsuarioDTO implements Serializable {
+public class RutaEmpleadoDTO implements Serializable {
 
 	public static final long serialVersionUID = 1L;
 
 	private Integer id;
 	
-	private UsuarioEntity usuario;
-	
-	private String token;
-	
-	private Date fechaVigencia;
+	private EmpresaClienteContadorEntity cliente;
 	
 	private Boolean activo;
 	

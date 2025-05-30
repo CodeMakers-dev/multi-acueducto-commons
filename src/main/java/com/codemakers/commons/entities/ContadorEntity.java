@@ -63,6 +63,10 @@ public class ContadorEntity implements Serializable {
 	@OneToOne
 	private TipoContadorEntity tipoContador;
 	
+	@JoinColumn(name = "id_direccion", referencedColumnName = "id")
+	@OneToOne
+	private DireccionEntity descripcion;
+	
 	@Basic(optional = false)
 	@Column(name = "serial")
 	private String serial;

@@ -3,6 +3,8 @@ package com.codemakers.commons.dtos;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.codemakers.commons.entities.DireccionEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,6 +35,8 @@ public class ContadorDTO implements Serializable {
 	private PersonaDTO cliente;
 	
 	private TipoContadorDTO tipoContador;
+	
+	private DireccionEntity descripcion;
 	
 	private String serial;
 	

@@ -32,8 +32,6 @@ public class PersonaDTO implements Serializable {
 	
 	private DireccionDTO direccion;
 	
-	private UsuarioDTO usuario;
-	
 	private TipoDocumentoDTO tipoDocumento;
 	
 	private Integer numeroCedula;

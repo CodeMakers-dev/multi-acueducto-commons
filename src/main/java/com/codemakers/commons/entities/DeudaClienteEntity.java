@@ -63,8 +63,8 @@ public class DeudaClienteEntity implements Serializable {
 	@OneToOne
 	private TipoDeudaEntity tipoDeuda;
 	
-	@JoinColumn(name = "id_fecha_deuda", referencedColumnName = "id")
-	@OneToOne
+	@Basic(optional = false)
+	@Column(name = "fecha_deuda")
 	private Date fechaDeuda;
 	
 	@Basic(optional = false)
