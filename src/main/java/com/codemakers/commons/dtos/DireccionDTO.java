@@ -30,11 +30,11 @@ public class DireccionDTO implements Serializable{
 
 	private Integer id;
 	
-	private DepartamentoDTO departamento;
+	private DepartamentoDTO departamentoId;
 	
-	private CiudadDTO ciudad;
+	private CiudadDTO ciudadId;
 	
-	private CorregimientoDTO corregimiento;
+	private CorregimientoDTO corregimientoId;
 	
 	private String descripcion;
 	

@@ -2,9 +2,10 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.RolDTO;
 import com.codemakers.commons.entities.RolEntity;
@@ -21,17 +22,18 @@ import com.codemakers.commons.entities.RolEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface RolMapper {
 
-	RolMapper INSTANCE = Mappers.getMapper(RolMapper.class);
-	
 	RolEntity dtoToEntity(RolDTO dto);
-	
-	@InheritInverseConfiguration
-	RolDTO entityToDto(RolEntity entity);
-	
-	List<RolDTO> listEntityToDtoList(List<RolEntity> list);
-	
-	List<RolEntity> listDtoToEntity(List<RolDTO> list);
+
+    RolDTO entityToDto(RolEntity entity);
+
+    List<RolDTO> listEntityToDtoList(List<RolEntity> list);
+
+    List<RolEntity> listDtoToEntity(List<RolDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntityFromDto(RolDTO dto, @MappingTarget RolEntity entity);
+
 }

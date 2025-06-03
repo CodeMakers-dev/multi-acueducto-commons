@@ -2,9 +2,10 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.CorregimientoDTO;
 import com.codemakers.commons.entities.CorregimientoEntity;
@@ -21,17 +22,17 @@ import com.codemakers.commons.entities.CorregimientoEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CorregimientoMapper {
 	
-	CorregimientoMapper INSTANCE = Mappers.getMapper(CorregimientoMapper.class);
-	
 	CorregimientoEntity dtoToEntity(CorregimientoDTO dto);
-	
-	@InheritInverseConfiguration
+
 	CorregimientoDTO entityToDto(CorregimientoEntity entity);
-	
-	List<CorregimientoDTO> listEntityToDtoList(List<CorregimientoEntity> list);
-	
-	List<CorregimientoEntity> listDtoToEntity(List<CorregimientoDTO> list);
+
+    List<CorregimientoDTO> listEntityToDtoList(List<CorregimientoEntity> list);
+
+    List<CorregimientoEntity> listDtoToEntity(List<CorregimientoDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntityFromDto(CorregimientoDTO dto, @MappingTarget CorregimientoEntity entity);
 }

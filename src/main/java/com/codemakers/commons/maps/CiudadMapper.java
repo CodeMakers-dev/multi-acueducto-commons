@@ -2,9 +2,10 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.CiudadDTO;
 import com.codemakers.commons.entities.CiudadEntity;
@@ -21,17 +22,17 @@ import com.codemakers.commons.entities.CiudadEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CiudadMapper {
 
-	CiudadMapper INSTANCE = Mappers.getMapper(CiudadMapper.class);
-	
 	CiudadEntity dtoToEntity(CiudadDTO dto);
-	
-	@InheritInverseConfiguration
+
 	CiudadDTO entityToDto(CiudadEntity entity);
-	
-	List<CiudadDTO> listEntityToDtoList(List<CiudadEntity> list);
-	
-	List<CiudadEntity> listDtoToEntity(List<CiudadDTO> list);
+
+    List<CiudadDTO> listEntityToDtoList(List<CiudadEntity> list);
+
+    List<CiudadEntity> listDtoToEntity(List<CiudadDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntityFromDto(CiudadDTO dto, @MappingTarget CiudadEntity entity);
 }

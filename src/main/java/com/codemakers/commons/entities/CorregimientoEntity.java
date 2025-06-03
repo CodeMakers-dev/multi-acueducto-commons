@@ -41,7 +41,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "ciudad", schema = "public")
+@Table(name = "corregimiento", schema = "public")
 @EntityListeners(AuditingEntityListener.class)
 public class CorregimientoEntity implements Serializable {
 

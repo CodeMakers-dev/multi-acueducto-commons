@@ -2,9 +2,10 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.PersonaDTO;
 import com.codemakers.commons.entities.PersonaEntity;
@@ -21,17 +22,17 @@ import com.codemakers.commons.entities.PersonaEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface PersonaMapper {
 
-	PersonaMapper INSTANCE = Mappers.getMapper(PersonaMapper.class);
-	
 	PersonaEntity dtoToEntity(PersonaDTO dto);
-	
-	@InheritInverseConfiguration
-	PersonaDTO entityToDto(PersonaEntity entity);
-	
-	List<PersonaDTO> listEntityToDtoList(List<PersonaEntity> list);
-	
-	List<PersonaEntity> listDtoToEntity(List<PersonaDTO> list);
+
+    PersonaDTO entityToDto(PersonaEntity entity);
+
+    List<PersonaDTO> listEntityToDtoList(List<PersonaEntity> list);
+
+    List<PersonaEntity> listDtoToEntity(List<PersonaDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntityFromDto(PersonaDTO dto, @MappingTarget PersonaEntity entity);
 }

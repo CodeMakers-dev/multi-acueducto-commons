@@ -2,9 +2,10 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.DepartamentoDTO;
 import com.codemakers.commons.entities.DepartamentoEntity;
@@ -21,17 +22,17 @@ import com.codemakers.commons.entities.DepartamentoEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface DepartamentoMapper {
 
-	DepartamentoMapper INSTANCE = Mappers.getMapper(DepartamentoMapper.class);
-	
 	DepartamentoEntity dtoToEntity(DepartamentoDTO dto);
-	
-	@InheritInverseConfiguration
+
 	DepartamentoDTO entityToDto(DepartamentoEntity entity);
-	
-	List<DepartamentoDTO> listEntityToDtoList(List<DepartamentoEntity> list);
-	
-	List<DepartamentoEntity> listDtoToEntity(List<DepartamentoDTO> list);
+
+    List<DepartamentoDTO> listEntityToDtoList(List<DepartamentoEntity> list);
+
+    List<DepartamentoEntity> listDtoToEntity(List<DepartamentoDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntityFromDto(DepartamentoDTO dto, @MappingTarget DepartamentoEntity entity);
 }

@@ -57,15 +57,15 @@ public class DireccionEntity implements Serializable{
 	
 	@JoinColumn(name = "id_departamento", referencedColumnName = "id")
 	@OneToOne
-	private DepartamentoEntity departamento;
+	private DepartamentoEntity departamentoId;
 	
 	@JoinColumn(name = "id_ciudad", referencedColumnName = "id")
 	@OneToOne
-	private CiudadEntity ciudad;
+	private CiudadEntity ciudadId;
 	
 	@JoinColumn(name = "id_corregimiento", referencedColumnName = "id")
 	@OneToOne
-	private CorregimientoEntity corregimiento;
+	private CorregimientoEntity corregimientoId;
 	
 	@Basic(optional = true)
 	@Column(name = "descripcion")

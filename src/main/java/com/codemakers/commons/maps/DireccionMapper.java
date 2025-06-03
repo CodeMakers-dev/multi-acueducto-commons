@@ -2,9 +2,10 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.DireccionDTO;
 import com.codemakers.commons.entities.DireccionEntity;
@@ -21,17 +22,17 @@ import com.codemakers.commons.entities.DireccionEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface DireccionMapper {
 
-	DireccionMapper INSTANCE = Mappers.getMapper(DireccionMapper.class);
-	
 	DireccionEntity dtoToEntity(DireccionDTO dto);
-	
-	@InheritInverseConfiguration
+
 	DireccionDTO entityToDto(DireccionEntity entity);
-	
-	List<DireccionDTO> listEntityToDtoList(List<DireccionEntity> list);
-	
-	List<DireccionEntity> listDtoToEntity(List<DireccionDTO> list);
+
+    List<DireccionDTO> listEntityToDtoList(List<DireccionEntity> list);
+
+    List<DireccionEntity> listDtoToEntity(List<DireccionDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntityFromDto(DireccionDTO dto, @MappingTarget DireccionEntity entity);
 }

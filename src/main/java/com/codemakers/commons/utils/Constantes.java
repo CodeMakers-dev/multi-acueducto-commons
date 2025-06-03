@@ -13,7 +13,9 @@ public class Constantes {
 	public static final String PASSWORD_SUCCESSFULLY ="Contraseña actualizada correctamente.";
 	public static final String UPDATE_ERROR = "Error al actualizar";
 	public static final String DELETE_ERROR = "Error al eliminar, registro no encontrado";
+	public static final String RECORD_NOT_FOUND = "Registro no encontrado";
 	public static final String CONSULTING_ERROR = "Error al consultar";
+	public static final String ERROR_QUERY_RECORD_BY_ID = "Error al consultar registro por Id";
 	public static final String NO_RECORD_FOUND = "No se ha encontrado ningún registro";
 	public static final String DEPART_NOT_FOUND = "Departamento no encontrado";
 	public static final String COUNTRY_CODE_NOT_FOUND = "pais + codigo no encontrado";
