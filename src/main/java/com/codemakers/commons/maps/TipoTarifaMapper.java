@@ -2,9 +2,10 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.TipoTarifaDTO;
 import com.codemakers.commons.entities.TipoTarifaEntity;
@@ -21,17 +22,17 @@ import com.codemakers.commons.entities.TipoTarifaEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface TipoTarifaMapper {
 
-	TipoTarifaMapper INSTANCE = Mappers.getMapper(TipoTarifaMapper.class);
-	
 	TipoTarifaEntity dtoToEntity(TipoTarifaDTO dto);
-	
-	@InheritInverseConfiguration
+
 	TipoTarifaDTO entityToDto(TipoTarifaEntity entity);
-	
-	List<TipoTarifaDTO> listEntityToDtoList(List<TipoTarifaEntity> list);
-	
-	List<TipoTarifaEntity> listDtoToEntity(List<TipoTarifaDTO> list);
+
+    List<TipoTarifaDTO> listEntityToDtoList(List<TipoTarifaEntity> list);
+
+    List<TipoTarifaEntity> listDtoToEntity(List<TipoTarifaDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntityFromDto(TipoTarifaDTO dto, @MappingTarget TipoTarifaEntity entity);
 }

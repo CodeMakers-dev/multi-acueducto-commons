@@ -83,7 +83,7 @@ public class PersonaEntity implements Serializable {
 	@Column(name = "segundo_apellido")
 	private String segundoApellido;
 	
-	@Basic(optional = false)
+	@Basic(optional = true)
 	@Column(name = "codigo")
 	private String codigo;
 	

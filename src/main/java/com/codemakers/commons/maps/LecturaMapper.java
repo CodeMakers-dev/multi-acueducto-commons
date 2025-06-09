@@ -2,9 +2,11 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.LecturaDTO;
 import com.codemakers.commons.entities.LecturaEntity;
@@ -21,17 +23,18 @@ import com.codemakers.commons.entities.LecturaEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface LecturaMapper {
 
-	LecturaMapper INSTANCE = Mappers.getMapper(LecturaMapper.class);
-	
 	LecturaEntity dtoToEntity(LecturaDTO dto);
-	
-	@InheritInverseConfiguration
+
 	LecturaDTO entityToDto(LecturaEntity entity);
-	
-	List<LecturaDTO> listEntityToDtoList(List<LecturaEntity> list);
-	
-	List<LecturaEntity> listDtoToEntity(List<LecturaDTO> list);
+
+    List<LecturaDTO> listEntityToDtoList(List<LecturaEntity> list);
+
+    List<LecturaEntity> listDtoToEntity(List<LecturaDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "contador", ignore = true)
+    void updateEntityFromDto(LecturaDTO dto, @MappingTarget LecturaEntity entity);
 }

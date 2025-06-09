@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
@@ -34,5 +35,7 @@ public interface PersonaMapper {
     List<PersonaEntity> listDtoToEntity(List<PersonaDTO> list);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "direccion", ignore = true)
+    @Mapping(target = "tipoDocumento", ignore = true)
     void updateEntityFromDto(PersonaDTO dto, @MappingTarget PersonaEntity entity);
 }

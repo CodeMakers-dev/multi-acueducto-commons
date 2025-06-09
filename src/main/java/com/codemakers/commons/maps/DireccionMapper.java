@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
@@ -34,5 +35,8 @@ public interface DireccionMapper {
     List<DireccionEntity> listDtoToEntity(List<DireccionDTO> list);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "corregimientoId", ignore = true)
+    @Mapping(target = "departamentoId", ignore = true)
+    @Mapping(target = "ciudadId", ignore = true)
     void updateEntityFromDto(DireccionDTO dto, @MappingTarget DireccionEntity entity);
 }

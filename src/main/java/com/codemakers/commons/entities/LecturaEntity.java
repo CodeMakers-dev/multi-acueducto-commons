@@ -67,8 +67,8 @@ public class LecturaEntity implements Serializable {
 	@Column(name = "fecha_lectura")
 	private Date fechaLectura;
 	
-	@Basic(optional = false)
-	@Column(name = "consumo_anormal",nullable = false)
+	@Basic(optional = true)
+	@Column(name = "consumo_anormal")
 	private Boolean consumoAnormal;
 	
 	@Basic(optional = true)

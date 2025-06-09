@@ -2,9 +2,11 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.ContadorDTO;
 import com.codemakers.commons.entities.ContadorEntity;
@@ -21,17 +23,20 @@ import com.codemakers.commons.entities.ContadorEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ContadorMapper {
 
-	ContadorMapper INSTANCE = Mappers.getMapper(ContadorMapper.class);
-	
 	ContadorEntity dtoToEntity(ContadorDTO dto);
-	
-	@InheritInverseConfiguration
+
 	ContadorDTO entityToDto(ContadorEntity entity);
-	
-	List<ContadorDTO> listEntityToDtoList(List<ContadorEntity> list);
-	
-	List<ContadorEntity> listDtoToEntity(List<ContadorDTO> list);
+
+    List<ContadorDTO> listEntityToDtoList(List<ContadorEntity> list);
+
+    List<ContadorEntity> listDtoToEntity(List<ContadorDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "cliente", ignore = true)
+    @Mapping(target = "tipoContador", ignore = true)
+    @Mapping(target = "descripcion", ignore = true)
+    void updateEntityFromDto(ContadorDTO dto, @MappingTarget ContadorEntity entity);
 }

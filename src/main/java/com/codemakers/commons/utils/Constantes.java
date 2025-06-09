@@ -26,4 +26,7 @@ public class Constantes {
 	public static final String PASSWORD_DIFFERENT ="La nueva contraseña debe ser diferente a la actual";
 	public static final String USER_REQUIRED = "El usuario es obligatorio";
 	public static final String USER_INVALID = "El usuario está inactivo. No se puede recuperar la contraseña.";
+	
+	public static final String INVALID_CREDENTIALS = "Credenciales inválidas";
+
 }
