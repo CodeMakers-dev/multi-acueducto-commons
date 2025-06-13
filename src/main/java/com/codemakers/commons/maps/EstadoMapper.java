@@ -2,9 +2,10 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.EstadoDTO;
 import com.codemakers.commons.entities.EstadoEntity;
@@ -21,17 +22,17 @@ import com.codemakers.commons.entities.EstadoEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface EstadoMapper {
 
-	EstadoMapper INSTANCE = Mappers.getMapper(EstadoMapper.class);
-	
 	EstadoEntity dtoToEntity(EstadoDTO dto);
-	
-	@InheritInverseConfiguration
+
 	EstadoDTO entityToDto(EstadoEntity entity);
-	
-	List<EstadoDTO> listEntityToDtoList(List<EstadoEntity> list);
-	
-	List<EstadoEntity> listDtoToEntity(List<EstadoDTO> list);
+
+    List<EstadoDTO> listEntityToDtoList(List<EstadoEntity> list);
+
+    List<EstadoEntity> listDtoToEntity(List<EstadoDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntityFromDto(EstadoDTO dto, @MappingTarget EstadoEntity entity);
 }
