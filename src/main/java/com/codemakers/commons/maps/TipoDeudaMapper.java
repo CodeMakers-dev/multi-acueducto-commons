@@ -2,9 +2,10 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.TipoDeudaDTO;
 import com.codemakers.commons.entities.TipoDeudaEntity;
@@ -21,17 +22,17 @@ import com.codemakers.commons.entities.TipoDeudaEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface TipoDeudaMapper {
 
-	TipoDeudaMapper INSTANCE = Mappers.getMapper(TipoDeudaMapper.class);
-	
 	TipoDeudaEntity dtoToEntity(TipoDeudaDTO dto);
-	
-	@InheritInverseConfiguration
+
 	TipoDeudaDTO entityToDto(TipoDeudaEntity entity);
-	
-	List<TipoDeudaDTO> listEntityToDtoList(List<TipoDeudaEntity> list);
-	
-	List<TipoDeudaEntity> listDtoToEntity(List<TipoDeudaDTO> list);
+
+    List<TipoDeudaDTO> listEntityToDtoList(List<TipoDeudaEntity> list);
+
+    List<TipoDeudaEntity> listDtoToEntity(List<TipoDeudaDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntityFromDto(TipoDeudaDTO dto, @MappingTarget TipoDeudaEntity entity);
 }
