@@ -2,9 +2,10 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.CorreoPersonaDTO;
 import com.codemakers.commons.entities.CorreoPersonaEntity;
@@ -21,17 +22,17 @@ import com.codemakers.commons.entities.CorreoPersonaEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CorreoPersonaMapper {
 
-	CorreoPersonaMapper INSTANCE = Mappers.getMapper(CorreoPersonaMapper.class);
-	
 	CorreoPersonaEntity dtoToEntity(CorreoPersonaDTO dto);
-	
-	@InheritInverseConfiguration
+
 	CorreoPersonaDTO entityToDto(CorreoPersonaEntity entity);
-	
-	List<CorreoPersonaDTO> listEntityToDtoList(List<CorreoPersonaEntity> list);
-	
-	List<CorreoPersonaEntity> listDtoToEntity(List<CorreoPersonaDTO> list);
+
+    List<CorreoPersonaDTO> listEntityToDtoList(List<CorreoPersonaEntity> list);
+
+    List<CorreoPersonaEntity> listDtoToEntity(List<CorreoPersonaDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntityFromDto(CorreoPersonaDTO dto, @MappingTarget CorreoPersonaEntity entity);
 }

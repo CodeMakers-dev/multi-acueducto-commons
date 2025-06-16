@@ -1,5 +1,8 @@
 package com.codemakers.commons.repositories;
 
+import java.util.Optional;
+
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,5 +16,5 @@ import com.codemakers.commons.entities.CorreoPersonaEntity;
 
 @Repository
 public interface CorreoPersonaRepository extends JpaRepository<CorreoPersonaEntity, Integer> {
-
+	Optional<CorreoPersonaEntity> findByCorreoIgnoreCase(String correo);
 }
