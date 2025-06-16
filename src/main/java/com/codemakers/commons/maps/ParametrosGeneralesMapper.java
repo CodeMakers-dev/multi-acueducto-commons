@@ -2,9 +2,10 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.ParametrosGeneralesDTO;
 import com.codemakers.commons.entities.ParametrosGeneralesEntity;
@@ -21,17 +22,17 @@ import com.codemakers.commons.entities.ParametrosGeneralesEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ParametrosGeneralesMapper {
 
-	ParametrosGeneralesMapper INSTANCE = Mappers.getMapper(ParametrosGeneralesMapper.class);
-	
 	ParametrosGeneralesEntity dtoToEntity(ParametrosGeneralesDTO dto);
-	
-	@InheritInverseConfiguration
+
 	ParametrosGeneralesDTO entityToDto(ParametrosGeneralesEntity entity);
-	
-	List<ParametrosGeneralesDTO> listEntityToDtoList(List<ParametrosGeneralesEntity> list);
-	
-	List<ParametrosGeneralesEntity> listDtoToEntity(List<ParametrosGeneralesDTO> list);
+
+    List<ParametrosGeneralesDTO> listEntityToDtoList(List<ParametrosGeneralesEntity> list);
+
+    List<ParametrosGeneralesEntity> listDtoToEntity(List<ParametrosGeneralesDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntityFromDto(ParametrosGeneralesDTO dto, @MappingTarget ParametrosGeneralesEntity entity);
 }

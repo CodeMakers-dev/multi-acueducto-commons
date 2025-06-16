@@ -2,9 +2,10 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.CorreoEmpresaDTO;
 import com.codemakers.commons.entities.CorreoEmpresaEntity;
@@ -21,17 +22,17 @@ import com.codemakers.commons.entities.CorreoEmpresaEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CorreoEmpresaMapper {
 
-	CorreoEmpresaMapper INSTANCE = Mappers.getMapper(CorreoEmpresaMapper.class);
-	
 	CorreoEmpresaEntity dtoToEntity(CorreoEmpresaDTO dto);
-	
-	@InheritInverseConfiguration
+
 	CorreoEmpresaDTO entityToDto(CorreoEmpresaEntity entity);
-	
-	List<CorreoEmpresaDTO> listEntityToDtoList(List<CorreoEmpresaEntity> list);
-	
-	List<CorreoEmpresaEntity> listDtoToEntity(List<CorreoEmpresaDTO> list);
+
+    List<CorreoEmpresaDTO> listEntityToDtoList(List<CorreoEmpresaEntity> list);
+
+    List<CorreoEmpresaEntity> listDtoToEntity(List<CorreoEmpresaDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntityFromDto(CorreoEmpresaDTO dto, @MappingTarget CorreoEmpresaEntity entity);
 }

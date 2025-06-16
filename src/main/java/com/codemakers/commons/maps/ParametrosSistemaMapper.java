@@ -2,9 +2,10 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.ParametrosSistemaDTO;
 import com.codemakers.commons.entities.ParametrosSistemaEntity;
@@ -21,17 +22,17 @@ import com.codemakers.commons.entities.ParametrosSistemaEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ParametrosSistemaMapper {
 
-	ParametrosSistemaMapper INSTANCE = Mappers.getMapper(ParametrosSistemaMapper.class);
-	
 	ParametrosSistemaEntity dtoToEntity(ParametrosSistemaDTO dto);
-	
-	@InheritInverseConfiguration
+
 	ParametrosSistemaDTO entityToDto(ParametrosSistemaEntity entity);
-	
-	List<ParametrosSistemaDTO> listEntityToDtoList(List<ParametrosSistemaEntity> list);
-	
-	List<ParametrosSistemaEntity> listDtoToEntity(List<ParametrosSistemaDTO> list);
+
+    List<ParametrosSistemaDTO> listEntityToDtoList(List<ParametrosSistemaEntity> list);
+
+    List<ParametrosSistemaEntity> listDtoToEntity(List<ParametrosSistemaDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntityFromDto(ParametrosSistemaDTO dto, @MappingTarget ParametrosSistemaEntity entity);
 }
