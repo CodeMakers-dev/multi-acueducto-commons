@@ -13,5 +13,6 @@ import com.codemakers.commons.entities.TelefonoPersonaEntity;
 
 @Repository
 public interface TelefonoPersonaRepository extends JpaRepository<TelefonoPersonaEntity, Integer> {
-
+	
+	boolean existsByNumero(String numero);
 }

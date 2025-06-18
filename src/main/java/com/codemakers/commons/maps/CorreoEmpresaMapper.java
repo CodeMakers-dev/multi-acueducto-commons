@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
@@ -34,5 +35,6 @@ public interface CorreoEmpresaMapper {
     List<CorreoEmpresaEntity> listDtoToEntity(List<CorreoEmpresaDTO> list);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "empresa", ignore = true)
     void updateEntityFromDto(CorreoEmpresaDTO dto, @MappingTarget CorreoEmpresaEntity entity);
 }

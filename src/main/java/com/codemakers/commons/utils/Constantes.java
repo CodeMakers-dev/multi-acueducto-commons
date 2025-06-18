@@ -35,5 +35,12 @@ public class Constantes {
 	
 	public static final String INVALID_CREDENTIALS = "Credenciales inválidas";
 	public static final String INTERNAL_SERVER_ERROR = "Error interno del servidor";
+	public static final String DUPLICATE_PHONE_NUMBER_ERROR = "numero de telefono ya existe";
+	public static final String ABONO_NOT_EXIST = "el abono no existe.";
+	public static final String BEARER = "Bearer";
+	public static final String CLIENT_NOT_EXIST = "el Cliente Novedad no existe.";
+	
+
+	
 
 }

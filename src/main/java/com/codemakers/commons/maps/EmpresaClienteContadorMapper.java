@@ -2,9 +2,11 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.EmpresaClienteContadorDTO;
 import com.codemakers.commons.entities.EmpresaClienteContadorEntity;
@@ -21,17 +23,20 @@ import com.codemakers.commons.entities.EmpresaClienteContadorEntity;
  * 
  */
 
-@Mapper
-public interface EmpresaClienteContadorMapper {
+@Mapper(componentModel = "spring")
+public interface EmpresaClienteContadorMapper{
 
-	EmpresaClienteContadorMapper INSTANCE = Mappers.getMapper(EmpresaClienteContadorMapper.class);
-	
 	EmpresaClienteContadorEntity dtoToEntity(EmpresaClienteContadorDTO dto);
-	
-	@InheritInverseConfiguration
+
 	EmpresaClienteContadorDTO entityToDto(EmpresaClienteContadorEntity entity);
-	
-	List<EmpresaClienteContadorDTO> listEntityToDtoList(List<EmpresaClienteContadorEntity> list);
-	
-	List<EmpresaClienteContadorEntity> listDtoToEntity(List<EmpresaClienteContadorDTO> list);
+
+    List<EmpresaClienteContadorDTO> listEntityToDtoList(List<EmpresaClienteContadorEntity> list);
+
+    List<EmpresaClienteContadorEntity> listDtoToEntity(List<EmpresaClienteContadorDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "empresa", ignore = true)
+    @Mapping(target = "cliente", ignore = true)
+    @Mapping(target = "contador", ignore = true)
+    void updateEntityFromDto(EmpresaClienteContadorDTO dto, @MappingTarget EmpresaClienteContadorEntity entity);
 }

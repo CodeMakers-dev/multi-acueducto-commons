@@ -2,9 +2,11 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.ClienteNovedadDTO;
 import com.codemakers.commons.entities.ClienteNovedadEntity;
@@ -21,17 +23,19 @@ import com.codemakers.commons.entities.ClienteNovedadEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ClienteNovedadMapper {
 
-	ClienteNovedadMapper INSTANCE = Mappers.getMapper(ClienteNovedadMapper.class);
-	
 	ClienteNovedadEntity dtoToEntity(ClienteNovedadDTO dto);
-	
-	@InheritInverseConfiguration
+
 	ClienteNovedadDTO entityToDto(ClienteNovedadEntity entity);
-	
-	List<ClienteNovedadDTO> listEntityToDtoList(List<ClienteNovedadEntity> list);
-	
-	List<ClienteNovedadEntity> listDtoToEntity(List<ClienteNovedadDTO> list);
+
+    List<ClienteNovedadDTO> listEntityToDtoList(List<ClienteNovedadEntity> list);
+
+    List<ClienteNovedadEntity> listDtoToEntity(List<ClienteNovedadDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "factura", ignore = true)
+    @Mapping(target = "tipoNovedad", ignore = true)
+    void updateEntityFromDto(ClienteNovedadDTO dto, @MappingTarget ClienteNovedadEntity entity);
 }

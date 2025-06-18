@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import com.codemakers.commons.dtos.TipoNovedadDTO;
@@ -33,5 +34,6 @@ public interface TipoNovedadMapper {
     List<TipoNovedadEntity> listDtoToEntity(List<TipoNovedadDTO> list);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "persona", ignore = true)
     void updateEntityFromDto(TipoNovedadDTO dto, @MappingTarget TipoNovedadEntity entity);
 }
