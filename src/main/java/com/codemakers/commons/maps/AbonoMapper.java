@@ -2,9 +2,11 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.AbonoDTO;
 import com.codemakers.commons.entities.AbonoEntity;
@@ -21,17 +23,18 @@ import com.codemakers.commons.entities.AbonoEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface AbonoMapper {
 
-	AbonoMapper INSTANCE = Mappers.getMapper(AbonoMapper.class);
-	
 	AbonoEntity dtoToEntity(AbonoDTO dto);
-	
-	@InheritInverseConfiguration
+
 	AbonoDTO entityToDto(AbonoEntity entity);
-	
-	List<AbonoDTO> listEntityToDtoList(List<AbonoEntity> list);
-	
-	List<AbonoEntity> listDtoToEntity(List<AbonoDTO> list);
+
+    List<AbonoDTO> listEntityToDtoList(List<AbonoEntity> list);
+
+    List<AbonoEntity> listDtoToEntity(List<AbonoDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "deudaCliente", ignore = true)
+    void updateEntityFromDto(AbonoDTO dto, @MappingTarget AbonoEntity entity);
 }

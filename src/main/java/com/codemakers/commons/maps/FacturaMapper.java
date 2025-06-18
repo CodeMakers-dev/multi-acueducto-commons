@@ -2,9 +2,11 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.FacturaDTO;
 import com.codemakers.commons.entities.FacturaEntity;
@@ -21,17 +23,22 @@ import com.codemakers.commons.entities.FacturaEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface FacturaMapper {
 
-	FacturaMapper INSTANCE = Mappers.getMapper(FacturaMapper.class);
-	
 	FacturaEntity dtoToEntity(FacturaDTO dto);
-	
-	@InheritInverseConfiguration
+
 	FacturaDTO entityToDto(FacturaEntity entity);
-	
-	List<FacturaDTO> listEntityToDtoList(List<FacturaEntity> list);
-	
-	List<FacturaEntity> listDtoToEntity(List<FacturaDTO> list);
+
+    List<FacturaDTO> listEntityToDtoList(List<FacturaEntity> list);
+
+    List<FacturaEntity> listDtoToEntity(List<FacturaDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "empresaClienteContador", ignore = true)
+    @Mapping(target = "tarifa", ignore = true)
+    @Mapping(target = "lectura", ignore = true)
+    @Mapping(target = "tipoPago", ignore = true)
+    @Mapping(target = "estado", ignore = true)
+    void updateEntityFromDto(FacturaDTO dto, @MappingTarget FacturaEntity entity);
 }

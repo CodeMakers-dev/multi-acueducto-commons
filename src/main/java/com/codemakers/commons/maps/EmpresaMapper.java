@@ -2,9 +2,11 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.EmpresaDTO;
 import com.codemakers.commons.entities.EmpresaEntity;
@@ -21,17 +23,20 @@ import com.codemakers.commons.entities.EmpresaEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface EmpresaMapper {
 
-	EmpresaMapper INSTANCE = Mappers.getMapper(EmpresaMapper.class);
-	
 	EmpresaEntity dtoToEntity(EmpresaDTO dto);
-	
-	@InheritInverseConfiguration
+
 	EmpresaDTO entityToDto(EmpresaEntity entity);
-	
-	List<EmpresaDTO> listEntityToDtoList(List<EmpresaEntity> list);
-	
-	List<EmpresaEntity> listDtoToEntity(List<EmpresaDTO> list);
+
+    List<EmpresaDTO> listEntityToDtoList(List<EmpresaEntity> list);
+
+    List<EmpresaEntity> listDtoToEntity(List<EmpresaDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "usuario", ignore = true)
+    @Mapping(target = "estado", ignore = true)
+    @Mapping(target = "direccion", ignore = true)
+    void updateEntityFromDto(EmpresaDTO dto, @MappingTarget EmpresaEntity entity);
 }

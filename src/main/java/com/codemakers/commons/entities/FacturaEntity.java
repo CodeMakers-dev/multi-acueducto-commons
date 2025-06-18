@@ -44,7 +44,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "factrua", schema = "public")
+@Table(name = "factura", schema = "public")
 @EntityListeners(AuditingEntityListener.class)
 public class FacturaEntity implements Serializable {
 
@@ -56,7 +56,7 @@ public class FacturaEntity implements Serializable {
 	@Column(name = "id")
 	private Integer id;
 	
-	@JoinColumn(name = "empresa_cliente_contador", referencedColumnName = "id")
+	@JoinColumn(name = "id_empresa_cliente_contador", referencedColumnName = "id")
 	@OneToOne
 	private EmpresaClienteContadorEntity empresaClienteContador;
 	

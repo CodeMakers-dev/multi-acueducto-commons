@@ -2,9 +2,11 @@ package com.codemakers.commons.maps;
 
 import java.util.List;
 
-import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.TelefonoPersonaDTO;
 import com.codemakers.commons.entities.TelefonoPersonaEntity;
@@ -21,17 +23,18 @@ import com.codemakers.commons.entities.TelefonoPersonaEntity;
  * 
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface TelefonoPersonaMapper {
 
-	TelefonoPersonaMapper INSTANCE = Mappers.getMapper(TelefonoPersonaMapper.class);
-	
 	TelefonoPersonaEntity dtoToEntity(TelefonoPersonaDTO dto);
-	
-	@InheritInverseConfiguration
+
 	TelefonoPersonaDTO entityToDto(TelefonoPersonaEntity entity);
-	
-	List<TelefonoPersonaDTO> listEntityToDtoList(List<TelefonoPersonaEntity> list);
-	
-	List<TelefonoPersonaEntity> listDtoToEntity(List<TelefonoPersonaDTO> list);
+
+    List<TelefonoPersonaDTO> listEntityToDtoList(List<TelefonoPersonaEntity> list);
+
+    List<TelefonoPersonaEntity> listDtoToEntity(List<TelefonoPersonaDTO> list);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "persona", ignore = true)
+    void updateEntityFromDto(TelefonoPersonaDTO dto, @MappingTarget TelefonoPersonaEntity entity);
 }
