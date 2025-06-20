@@ -39,6 +39,28 @@ public class Constantes {
 	public static final String ABONO_NOT_EXIST = "el abono no existe.";
 	public static final String BEARER = "Bearer";
 	public static final String CLIENT_NOT_EXIST = "el Cliente Novedad no existe.";
+	public static final String CLIENT_NOT_FOUND = "Cliente no encontrado";
+	public static final String COUND_NOT_FOUND = "Tipo de contador no encontrado";
+	public static final String DIREC_NOT_FOUND = "Direccion no encontrada";
+	public static final String ECC_NOT_FOUND = "La Empresa Cliente Contador no existe.";
+	public static final String EMP_NOT_FOUND = "La empresa no existe.";
+	public static final String FAC_NOT_FOUND = "Factura no encontrada";
+	public static final String FAC_UPD_SUCCESS = "Factura actualizada correctamente";
+	public static final String UPD_NOT_FOUND = "Error actualizando la factura";
+	public static final String CON_NOT_FOUND = "Contador no encontrado";
+	public static final String TD_NOT_FOUND = "Tipo de documento no encontrado";
+	public static final String ROL_NOT_FOUND = "Rol no encontrado para el Id: %d";
+	public static final String RUT_NOT_FOUND = "La Ruta Empleado no existe.";
+	public static final String TIP_NOT_FOUND = "Tipo tarifa no encontrada";
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 	
