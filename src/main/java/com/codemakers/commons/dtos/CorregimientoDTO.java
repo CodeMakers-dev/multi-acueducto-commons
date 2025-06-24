@@ -1,7 +1,9 @@
 package com.codemakers.commons.dtos;
 
 import java.io.Serializable;
+
 import java.util.Date;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,6 +35,8 @@ public class CorregimientoDTO implements Serializable {
 	private String nombre;
 	
 	private Boolean activo;
+	
+	private CiudadDTO ciudad;
 	
 	private String usuarioCreacion;
 

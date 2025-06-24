@@ -16,6 +16,8 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -56,6 +58,10 @@ public class CorregimientoEntity implements Serializable {
 	@Basic(optional = false)
 	@Column(name = "nombre")
 	private String nombre;
+	
+	@JoinColumn(name = "id_ciudad", referencedColumnName = "id")
+	@ManyToOne
+	private CiudadEntity ciudad;
 	
 	@Basic(optional = false)
 	@Column(name = "activo",nullable = false)
