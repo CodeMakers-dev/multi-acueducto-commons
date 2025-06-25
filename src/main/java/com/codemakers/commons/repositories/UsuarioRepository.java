@@ -17,4 +17,6 @@ import com.codemakers.commons.entities.UsuarioEntity;
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Integer>{
 
 	Optional<UsuarioEntity> findByNombre(String nombre);
+	
+	boolean existsByNombre(String nombre);
 }

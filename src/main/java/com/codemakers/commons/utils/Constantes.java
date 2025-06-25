@@ -50,8 +50,20 @@ public class Constantes {
 	public static final String CON_NOT_FOUND = "Contador no encontrado";
 	public static final String TD_NOT_FOUND = "Tipo de documento no encontrado";
 	public static final String ROL_NOT_FOUND = "Rol no encontrado para el Id: %d";
+	public static final String ROLE_NOT_FOUND = "Rol no encontrada";
+	public static final String PERSON_NOT_FOUND = "Persona no encontrado";
 	public static final String RUT_NOT_FOUND = "La Ruta Empleado no existe.";
 	public static final String TIP_NOT_FOUND = "Tipo tarifa no encontrada";
+	public static final String USER_ALREADY_EXISTS = "Ya existe un usuario con ese nombre";
+	public static final String RATE_TYPE_ALREADY_EXISTS = "La empresa ya tiene una tarifa con ese tipo de tarifa";
+	public static final String NUMBER_EXISTS = "Ya existe una persona con ese número de cédula";
+	public static final String PERSON_EXISTS = "Ya existe una persona con ese nombre";
+	
+	
+	
+	
+	
+	
 	
 	
 	
