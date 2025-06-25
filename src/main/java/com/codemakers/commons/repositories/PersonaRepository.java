@@ -13,5 +13,6 @@ import com.codemakers.commons.entities.PersonaEntity;
 
 @Repository
 public interface PersonaRepository extends JpaRepository<PersonaEntity, Integer> {
-
+	boolean existsByNumeroCedula(String numeroCedula);
+	boolean existsByNombre(String nombre);
 }

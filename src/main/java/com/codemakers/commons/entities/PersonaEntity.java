@@ -65,7 +65,7 @@ public class PersonaEntity implements Serializable {
 	
 	@Basic(optional = false)
 	@Column(name = "numero_cedula")
-	private Integer numeroCedula;
+	private String numeroCedula;
 	
 	@Basic(optional = false)
 	@Column(name = "primer_nombre")

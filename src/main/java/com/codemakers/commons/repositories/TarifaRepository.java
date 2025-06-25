@@ -17,5 +17,6 @@ import com.codemakers.commons.entities.TarifaEntity;
 public interface TarifaRepository extends JpaRepository<TarifaEntity, Integer> {
 
 	List<TarifaEntity> findByEmpresaId(Integer empresaId);
+	boolean existsByEmpresaIdAndTipoTarifaId(Integer empresaId, Integer tipoTarifaId);
 
 }
