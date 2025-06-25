@@ -59,6 +59,11 @@ public class Constantes {
 	public static final String NUMBER_EXISTS = "Ya existe una persona con ese número de cédula";
 	public static final String PERSON_EXISTS = "Ya existe una persona con ese nombre";
 	
+	public static final String ERROR_KEY = "error";
+	public static final String RESULT_COULD_NOT_PROCESSED = "No se pudo procesar el resultado del SP";
+	public static final String PROCCESSING_ERROR = "Error de procesamiento JSON: ";
+	public static final String UNEXPECTED_ERROR = "Error inesperado: ";
+	
 	
 	
 	
