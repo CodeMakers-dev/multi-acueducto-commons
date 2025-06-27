@@ -13,5 +13,6 @@ import com.codemakers.commons.entities.EmpresaClienteContadorEntity;
 
 @Repository
 public interface EmpresaClienteContadorRepository extends JpaRepository<EmpresaClienteContadorEntity, Integer> {
+	boolean existsByEmpresaIdAndClienteIdAndContadorId(Integer empresaId, Integer clienteId, Integer contadorId);
 
 }
