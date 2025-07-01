@@ -11,9 +11,10 @@ public class Constantes {
 	public static final String DELETED_SUCCESSFULLY ="Eliminado exitosamente";
 	public static final String CONSULTED_SUCCESSFULLY ="Consulta exitosamente";
 	public static final String SENT_SUCCESSFULLY ="Enviado exitosamente";
+	public static final String EMAIL_NOT_FOUND ="Correo no encontrado o inactivo";
 	public static final String AUTHENTICATION_SUCCESSFULLY ="Autenticación exitosa";
 	public static final String SEND_ERROR ="Error al enviar mensaje";
-	
+	public static final String USER_NOT_FOUND= "Usuario no encontrado";
 	public static final String SAVE_ERROR = "Error al guardar";
 	public static final String PASSWORD_SUCCESSFULLY ="Contraseña actualizada correctamente.";
 	public static final String UPDATE_ERROR = "Error al actualizar";
@@ -28,11 +29,13 @@ public class Constantes {
 	public static final String TOKEN_REQUIRED = "Token de recuperación es obligatorio";
 	public static final String TOKEN_INVALID = "Token inválido o ya usado";
 	public static final String TOKEN_EXPIRED = "Token inválido o expirado" ;
+	public static final String USER_NOT_ASCIATED = "No se encontró un usuario asociado a este correo";
+	public static final String EMAIL_SEND = "Se ha enviado un correo de recuperación";
+	public static final String ERROR_APPLICATION = "Error al procesar la solicitud";
 	public static final String SPECIAL_CHARACTERS ="La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial (@#$%^&+=!)";
 	public static final String PASSWORD_DIFFERENT ="La nueva contraseña debe ser diferente a la actual";
 	public static final String USER_REQUIRED = "El usuario es obligatorio";
 	public static final String USER_INVALID = "El usuario está inactivo. No se puede recuperar la contraseña.";
-	
 	public static final String INVALID_CREDENTIALS = "Credenciales inválidas";
 	public static final String INTERNAL_SERVER_ERROR = "Error interno del servidor";
 	public static final String DUPLICATE_PHONE_NUMBER_ERROR = "numero de telefono ya existe";
@@ -59,8 +62,8 @@ public class Constantes {
 	public static final String NUMBER_EXISTS = "Ya existe una persona con ese número de cédula";
 	public static final String PERSON_EXISTS = "Ya existe una persona con ese nombre";
 	public static final String EMCL_EXISTS = "Ya existe una relación entre empresa, cliente y contador";
-	
-	
+	public static final String PASSWORD_RECOVER ="Recuperación de contraseña";
+	public static final String EMAIL_USER ="Se ha enviado un correo con las instrucciones para restablecer la contraseña.";
 	public static final String ERROR_KEY = "error";
 	public static final String RESULT_COULD_NOT_PROCESSED = "No se pudo procesar el resultado del SP";
 	public static final String PROCCESSING_ERROR = "Error de procesamiento JSON: ";
