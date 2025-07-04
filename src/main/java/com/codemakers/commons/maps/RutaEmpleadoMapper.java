@@ -35,6 +35,8 @@ public interface RutaEmpleadoMapper {
     List<RutaEmpleadoEntity> listDtoToEntity(List<RutaEmpleadoDTO> list);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "cliente", ignore = true)
+    @Mapping(target = "empresaClienteContador", ignore = true)
+    @Mapping(target = "empleadoEmpresa", ignore = true)
+    @Mapping(target = "lectura", ignore = true)
     void updateEntityFromDto(RutaEmpleadoDTO dto, @MappingTarget RutaEmpleadoEntity entity);
 }
