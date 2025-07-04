@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- *          Clase Entity de tipo (RutaEmpleado) que representa un registro de
+ *          Clase Entity de tipo (EmpleadoEmpresa) que representa un registro de
  *          la BD. Cada instancia de esta entidad representa un registro de la
  *          BD. Cada atributo representa una columna de la BD. Los métodos de
  *          esta clase se usan para manipular los datos. (Anotación @Data)
@@ -43,9 +43,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "ruta_empleado", schema = "public")
+@Table(name = "empleado_empresa", schema = "public")
 @EntityListeners(AuditingEntityListener.class)
-public class RutaEmpleadoEntity implements Serializable {
+public class EmpleadoEmpresaEntity implements Serializable {
 
 	public static final long serialVersionUID = 1L;
 
@@ -55,17 +55,13 @@ public class RutaEmpleadoEntity implements Serializable {
 	@Column(name = "id")
 	private Integer id;
 	
-	@JoinColumn(name = "id_empresa_cliente_contador", referencedColumnName = "id")
+	@JoinColumn(name = "id_empresa", referencedColumnName = "id")
 	@OneToOne
-	private EmpresaClienteContadorEntity empresaClienteContador;
+	private EmpresaEntity empresa;
 	
-	@JoinColumn(name = "id_empleado_empresa", referencedColumnName = "id")
+	@JoinColumn(name = "id_persona", referencedColumnName = "id")
 	@OneToOne
-	private EmpleadoEmpresaEntity empleadoEmpresa;
-	
-	@JoinColumn(name = "id_lectura_registrada", referencedColumnName = "id")
-	@OneToOne
-	private LecturaEntity lectura;
+	private PersonaEntity persona;
 	
 	@Basic(optional = false)
 	@Column(name = "activo",nullable = false)
