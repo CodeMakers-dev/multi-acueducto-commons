@@ -13,6 +13,7 @@ import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -56,11 +57,11 @@ public class EmpleadoEmpresaEntity implements Serializable {
 	private Integer id;
 	
 	@JoinColumn(name = "id_empresa", referencedColumnName = "id")
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	private EmpresaEntity empresa;
 	
 	@JoinColumn(name = "id_persona", referencedColumnName = "id")
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	private PersonaEntity persona;
 	
 	@Basic(optional = false)
