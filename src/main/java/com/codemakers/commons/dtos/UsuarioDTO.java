@@ -1,9 +1,9 @@
 package com.codemakers.commons.dtos;
 
 import java.io.Serializable;
+
 import java.util.Date;
 
-import com.codemakers.commons.entities.PersonaEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,7 +34,7 @@ public class UsuarioDTO implements Serializable{
 	
 	private RolDTO rol;
 	
-	private PersonaEntity persona;
+	private PersonaDTO persona;
 	
 	private String nombre;
 	

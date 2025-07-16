@@ -1,9 +1,9 @@
 package com.codemakers.commons.dtos;
 
 import java.io.Serializable;
+
 import java.util.Date;
 
-import com.codemakers.commons.entities.EmpresaEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,7 +32,7 @@ public class CorreoEmpresaDTO implements Serializable{
 
 	private Integer id;
 	
-	private EmpresaEntity empresa;
+	private EmpresaDTO empresa;
 	
 	private String correo;
 	

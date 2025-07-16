@@ -1,10 +1,10 @@
 package com.codemakers.commons.dtos;
 
 import java.io.Serializable;
+
 import java.util.Date;
 
-import com.codemakers.commons.entities.EmpresaEntity;
-import com.codemakers.commons.entities.PersonaEntity;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,9 +33,9 @@ public class EmpleadoEmpresaDTO implements Serializable {
 
 	private Integer id;
 	
-	private EmpresaEntity empresa;
+	private EmpresaDTO empresa;
 	
-	private PersonaEntity persona;
+	private PersonaDTO persona;
 	
 	private Boolean activo;
 	

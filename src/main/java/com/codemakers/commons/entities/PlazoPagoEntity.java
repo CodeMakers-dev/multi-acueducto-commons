@@ -13,40 +13,21 @@ import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * @author nicope
- * @version 1.0
- * 
- *          Clase Entity de tipo (Empresa) que representa un registro de
- *          la BD. Cada instancia de esta entidad representa un registro de la
- *          BD. Cada atributo representa una columna de la BD. Los métodos de
- *          esta clase se usan para manipular los datos. (Anotación @Data)
- * 
- *          Implementa la interfaz (Serializable) la cual permite convertir un
- *          objeto (instancia) en ceros y uno, para de esta manera pueda ser
- *          transportado, almacenado y reconstruido en otra plataforma o
- *          sistema.
- * 
- */
-
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "deuda_cliente", schema = "public")
+@Table(name = "plazo_pago", schema = "configuracion")
 @EntityListeners(AuditingEntityListener.class)
-public class DeudaClienteEntity implements Serializable {
+public class PlazoPagoEntity implements Serializable{
 
 	public static final long serialVersionUID = 1L;
 
@@ -56,29 +37,9 @@ public class DeudaClienteEntity implements Serializable {
 	@Column(name = "id")
 	private Integer id;
 	
-	@JoinColumn(name = "id_empresa_cliente_contador", referencedColumnName = "id")
-	@OneToOne(fetch = FetchType.LAZY)
-	private EmpresaClienteContadorEntity empresaClienteContador;
-	
-	@JoinColumn(name = "id_tipo_deuda", referencedColumnName = "id")
-	@OneToOne(fetch = FetchType.LAZY)
-	private TipoDeudaEntity tipoDeuda;
-	
-	@JoinColumn(name = "id_plazo_pago", referencedColumnName = "id")
-	@OneToOne(fetch = FetchType.LAZY)
-	private PlazoPagoEntity plazoPago;
-	
-	@JoinColumn(name = "id_factura", referencedColumnName = "id")
-	@OneToOne(fetch = FetchType.LAZY)
-	private FacturaEntity factura;
-	
 	@Basic(optional = false)
-	@Column(name = "fecha_deuda")
-	private Date fechaDeuda;
-	
-	@Basic(optional = false)
-	@Column(name = "valor")
-	private Double valor;
+	@Column(name = "nombre")
+	private String nombre;
 	
 	@Basic(optional = true)
 	@Column(name = "descripcion")

@@ -34,6 +34,10 @@ public class DeudaClienteDTO implements Serializable {
 	
 	private TipoDeudaDTO tipoDeuda;
 	
+	private FacturaDTO factura;
+	
+	private PlazoPagoDTO plazoPago;
+	
 	private Date fechaDeuda;
 	
 	private Double valor;

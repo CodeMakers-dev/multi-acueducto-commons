@@ -2,9 +2,9 @@ package com.codemakers.commons.dtos;
 
 import java.io.Serializable;
 
+
 import java.util.Date;
 
-import com.codemakers.commons.entities.EmpleadoEmpresaEntity;
 import com.codemakers.commons.entities.LecturaEntity;
 
 import lombok.AllArgsConstructor;
@@ -36,7 +36,7 @@ public class RutaEmpleadoDTO implements Serializable {
 	
 	private EmpresaClienteContadorDTO empresaClienteContador;
 	
-	private EmpleadoEmpresaEntity empleadoEmpresa;
+	private EmpleadoEmpresaDTO empleadoEmpresa;
 	
 	private LecturaEntity lectura;
 	
