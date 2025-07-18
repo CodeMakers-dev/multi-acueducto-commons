@@ -64,10 +64,6 @@ public class AbonoEntity {
 	private Double valor;
 	
 	@Basic(optional = false)
-	@Column(name = "codigo_factura")
-	private String codigoFactura;
-	
-	@Basic(optional = false)
 	@Column(name = "activo",nullable = false)
 	private Boolean activo;
 	

@@ -1,6 +1,7 @@
 package com.codemakers.commons.dtos;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -38,7 +39,7 @@ public class DeudaClienteDTO implements Serializable {
 	
 	private PlazoPagoDTO plazoPago;
 	
-	private Date fechaDeuda;
+	private LocalDate fechaDeuda;
 	
 	private Double valor;
 	

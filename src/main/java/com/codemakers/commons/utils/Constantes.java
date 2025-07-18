@@ -9,7 +9,7 @@ public class Constantes {
 	public static final String SAVED_SUCCESSFULLY ="Guardado exitosamente";
 	public static final String UPDATED_SUCCESSFULLY ="Actualizado exitosamente";
 	public static final String DELETED_SUCCESSFULLY ="Eliminado exitosamente";
-	public static final String CONSULTED_SUCCESSFULLY ="Consulta exitosamente de consultar ususarios";
+	public static final String CONSULTED_SUCCESSFULLY ="Consulta exitosamente";
 	public static final String SENT_SUCCESSFULLY ="Enviado exitosamente";
 	public static final String EMAIL_NOT_FOUND ="Correo no encontrado o inactivo";
 	public static final String AUTHENTICATION_SUCCESSFULLY ="Autenticación exitosa";
@@ -68,6 +68,8 @@ public class Constantes {
 	public static final String RESULT_COULD_NOT_PROCESSED = "No se pudo procesar el resultado del SP";
 	public static final String PROCCESSING_ERROR = "Error de procesamiento JSON: ";
 	public static final String UNEXPECTED_ERROR = "Error inesperado: ";
+	public static final String MAYOR_VALUE = "El valor del abono no puede ser mayor al valor de la deuda";
+	
 	
 	
 	

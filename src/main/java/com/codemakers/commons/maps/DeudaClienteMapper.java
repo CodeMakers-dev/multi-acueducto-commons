@@ -37,5 +37,7 @@ public interface DeudaClienteMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "empresaClienteContador", ignore = true)
     @Mapping(target = "tipoDeuda", ignore = true)
+    @Mapping(target = "factura", ignore = true)
+    @Mapping(target = "plazoPago", ignore = true)
     void updateEntityFromDto(DeudaClienteDTO dto, @MappingTarget DeudaClienteEntity entity);
 }

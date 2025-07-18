@@ -13,5 +13,5 @@ import com.codemakers.commons.entities.AbonoEntity;
 
 @Repository
 public interface AbonoRepository extends JpaRepository<AbonoEntity, Integer> {
-
+	void deleteByDeudaClienteId(Integer deudaId);
 }

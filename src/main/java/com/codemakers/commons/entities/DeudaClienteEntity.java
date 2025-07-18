@@ -1,6 +1,7 @@
 package com.codemakers.commons.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.data.annotation.CreatedBy;
@@ -72,9 +73,10 @@ public class DeudaClienteEntity implements Serializable {
 	@OneToOne(fetch = FetchType.LAZY)
 	private FacturaEntity factura;
 	
+	@Temporal(TemporalType.DATE)
 	@Basic(optional = false)
 	@Column(name = "fecha_deuda")
-	private Date fechaDeuda;
+	private LocalDate fechaDeuda;
 	
 	@Basic(optional = false)
 	@Column(name = "valor")

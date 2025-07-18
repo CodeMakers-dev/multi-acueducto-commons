@@ -34,8 +34,6 @@ public class AbonoDTO implements Serializable {
 	
 	private Double valor;
 	
-	private String codigoFactura;
-	
 	private Boolean activo;
 	
 	private String usuarioCreacion;
