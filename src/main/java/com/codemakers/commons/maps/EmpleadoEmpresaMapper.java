@@ -9,6 +9,7 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.EmpleadoEmpresaDTO;
+import com.codemakers.commons.dtos.EmpleadoEmpresaResponseDTO;
 import com.codemakers.commons.entities.EmpleadoEmpresaEntity;
 
 /**
@@ -38,4 +39,19 @@ public interface EmpleadoEmpresaMapper {
     @Mapping(target = "empresa", ignore = true)
     @Mapping(target = "persona", ignore = true)
     void updateEntityFromDto(EmpleadoEmpresaDTO dto, @MappingTarget EmpleadoEmpresaEntity entity);
+    
+
+    @Mapping(target = "empresaId", source = "empresa.id")
+    @Mapping(target = "empresaNombre", source = "empresa.nombre")
+    @Mapping(target = "personaId", source = "persona.id")
+    @Mapping(target = "personaNombreCompleto", expression = "java("
+    	    + "entity.getPersona().getNombre() + \" \" + "
+    	    + "entity.getPersona().getSegundoNombre() + \" \" + "
+    	    + "entity.getPersona().getApellido() + \" \" + "
+    	    + "entity.getPersona().getSegundoApellido())")
+    @Mapping(target = "numeroCedula", source = "persona.numeroCedula")
+    @Mapping(target = "codigo",source = "persona.codigo")
+    EmpleadoEmpresaResponseDTO entityToResumenDto(EmpleadoEmpresaEntity entity);
+
+    List<EmpleadoEmpresaResponseDTO> listEntityToResumenDtoList(List<EmpleadoEmpresaEntity> list);
 }

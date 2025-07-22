@@ -20,4 +20,7 @@ public interface CorreoPersonaRepository extends JpaRepository<CorreoPersonaEnti
 	Optional<CorreoPersonaEntity> findByCorreoIgnoreCase(String correo);
 
 	Optional<CorreoPersonaEntity> findByCorreo(String correo);
+	
+	Optional<CorreoPersonaEntity> findByPersonaIdAndActivoTrue(Integer personaId);
+
 }
