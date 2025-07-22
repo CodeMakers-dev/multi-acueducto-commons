@@ -122,4 +122,8 @@ public class FacturaEntity implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@LastModifiedDate
 	private Date fechaModificacion;
+	
+	@Basic(optional = true)
+	@Column(name = "deuda_transferida",nullable = false)
+	private Boolean deudaTransferida;
 }

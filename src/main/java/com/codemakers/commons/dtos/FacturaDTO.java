@@ -59,4 +59,6 @@ public class FacturaDTO implements Serializable {
 	private String usuarioModificacion;
 
 	private Date fechaModificacion;
+	
+	private Boolean deudaTransferida;
 }
