@@ -57,4 +57,5 @@ public class PersonaDTO implements Serializable {
 	private String usuarioModificacion;
 
 	private Date fechaModificacion;
+	
 }
