@@ -1,10 +1,9 @@
 package com.codemakers.commons.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import org.springframework.stereotype.Repository;
 
-import com.codemakers.commons.entities.TelefonoEmpresaEntity;
+import com.codemakers.commons.entities.TelefonoGeneralEntity;
 
 /**
  * @author nicope
@@ -13,8 +12,7 @@ import com.codemakers.commons.entities.TelefonoEmpresaEntity;
  */
 
 @Repository
-public interface TelefonoEmpresaRepository extends JpaRepository<TelefonoEmpresaEntity, Integer> {
-
+public interface TelefonoGeneralRepository extends JpaRepository<TelefonoGeneralEntity, Integer> {
+	
 	boolean existsByNumero(String numero);
 }
-

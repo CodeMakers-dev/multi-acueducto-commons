@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- * Clase DTO que permite encapsular los datos de un objeto de tipo (CorreoPersonaEntity).
+ * Clase DTO que permite encapsular los datos de un objeto de tipo (TelefonoGeneralEntity).
  * Este DTO tiene varias ventajas como: 
  * Bajo acoplamiento entre las capaz de la aplicación
  * Optimización de la transferencia de datos.
@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CorreoPersonaDTO implements Serializable {
+public class TelefonoGeneralDTO implements Serializable {
 
 	public static final long serialVersionUID = 1L;
 
@@ -32,7 +32,9 @@ public class CorreoPersonaDTO implements Serializable {
 	
 	private PersonaDTO persona;
 	
-	private String correo;
+	private EmpresaDTO empresa;
+	
+	private String numero;
 	
 	private Boolean activo;
 	

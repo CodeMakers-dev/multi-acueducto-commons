@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- *          Clase Entity de tipo (TelefonoEmpresa) que representa un registro de
+ *          Clase Entity de tipo (TelefonoGeneral) que representa un registro de
  *          la BD. Cada instancia de esta entidad representa un registro de la
  *          BD. Cada atributo representa una columna de la BD. Los métodos de
  *          esta clase se usan para manipular los datos. (Anotación @Data)
@@ -44,9 +44,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "telefono_empresa", schema = "public")
+@Table(name = "telefono_general", schema = "public")
 @EntityListeners(AuditingEntityListener.class)
-public class TelefonoEmpresaEntity implements Serializable {
+public class TelefonoGeneralEntity implements Serializable {
 
 	public static final long serialVersionUID = 1L;
 
@@ -55,6 +55,10 @@ public class TelefonoEmpresaEntity implements Serializable {
 	@Basic(optional = false)
 	@Column(name = "id")
 	private Integer id;
+	
+	@JoinColumn(name = "id_persona", referencedColumnName = "id")
+	@OneToOne(fetch = FetchType.LAZY)
+	private PersonaEntity persona;
 	
 	@JoinColumn(name = "id_empresa", referencedColumnName = "id")
 	@OneToOne(fetch = FetchType.LAZY)

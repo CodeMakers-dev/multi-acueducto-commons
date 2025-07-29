@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- *          Clase Entity de tipo (CorreoPersona) que representa un registro de
+ *          Clase Entity de tipo (CorreoGeneral) que representa un registro de
  *          la BD. Cada instancia de esta entidad representa un registro de la
  *          BD. Cada atributo representa una columna de la BD. Los métodos de
  *          esta clase se usan para manipular los datos. (Anotación @Data)
@@ -44,9 +44,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "correo_persona", schema = "public")
+@Table(name = "correo_general", schema = "public")
 @EntityListeners(AuditingEntityListener.class)
-public class CorreoPersonaEntity implements Serializable {
+public class CorreoGeneralEntity implements Serializable {
 
 	public static final long serialVersionUID = 1L;
 
@@ -59,6 +59,10 @@ public class CorreoPersonaEntity implements Serializable {
 	@JoinColumn(name = "id_persona", referencedColumnName = "id")
 	@OneToOne(fetch = FetchType.LAZY)
 	private PersonaEntity persona;
+	
+	@JoinColumn(name = "id_empresa", referencedColumnName = "id")
+	@OneToOne(fetch = FetchType.LAZY)
+	private EmpresaEntity empresa;
 	
 	@Basic(optional = false)
 	@Column(name = "correo")
