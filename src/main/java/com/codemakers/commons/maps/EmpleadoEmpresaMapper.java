@@ -33,6 +33,8 @@ public interface EmpleadoEmpresaMapper {
 
     List<EmpleadoEmpresaDTO> listEntityToDtoList(List<EmpleadoEmpresaEntity> list);
 
+ 
+
     List<EmpleadoEmpresaEntity> listDtoToEntity(List<EmpleadoEmpresaDTO> list);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
