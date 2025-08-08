@@ -9,6 +9,7 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.EmpresaDTO;
+import com.codemakers.commons.dtos.EmpresaResponseDTO;
 import com.codemakers.commons.entities.EmpresaEntity;
 
 /**
@@ -39,4 +40,12 @@ public interface EmpresaMapper {
     @Mapping(target = "estado", ignore = true)
     @Mapping(target = "direccion", ignore = true)
     void updateEntityFromDto(EmpresaDTO dto, @MappingTarget EmpresaEntity entity);
+    
+    @Mapping(target = "departamento", source = "direccion.departamentoId.nombre")
+    @Mapping(target = "ciudad", source = "direccion.ciudadId.nombre")
+    @Mapping(target = "corregimiento", source = "direccion.corregimientoId.nombre")
+    @Mapping(target = "descripcionDireccion", source = "direccion.descripcion")
+    EmpresaResponseDTO entityToResumenDto(EmpresaEntity entity);
+
+    List<EmpresaResponseDTO> listEntityToResumenDtoList(List<EmpresaEntity> list);
 }
