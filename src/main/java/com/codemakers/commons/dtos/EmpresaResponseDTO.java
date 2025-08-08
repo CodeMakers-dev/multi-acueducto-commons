@@ -1,0 +1,26 @@
+package com.codemakers.commons.dtos;
+
+import java.io.Serializable;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class EmpresaResponseDTO implements Serializable {
+
+    private Integer id;
+    private String nombre;
+    private String nit;
+    private String codigo;
+    private Boolean activo;
+
+    private String departamento;
+    private String ciudad;
+    private String corregimiento;
+    private String descripcionDireccion;
+}
