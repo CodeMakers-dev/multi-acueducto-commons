@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- * Clase DTO que permite encapsular los datos de un objeto de tipo (EmpresaEntity).
+ * Clase DTO que permite encapsular los datos de un objeto de tipo (CategoriaProductoEntity).
  * Este DTO tiene varias ventajas como: 
  * Bajo acoplamiento entre las capaz de la aplicación
  * Optimización de la transferencia de datos.
@@ -24,25 +24,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class EmpresaDTO implements Serializable {
+public class CategoriaProductoDTO implements Serializable {
 
 	public static final long serialVersionUID = 1L;
 
 	private Integer id;
 	
-	private UsuarioDTO usuario;
-	
-	private ParametrosGeneralesDTO estado;
-	
-	private DireccionDTO direccion;
-	
 	private String nombre;
 	
-	private String nit;
-	
-	private String codigo;
-	
-	private byte[] imagen;
+	private String descripcion;
 	
 	private Boolean activo;
 	
