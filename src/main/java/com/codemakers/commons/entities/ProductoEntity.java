@@ -18,6 +18,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -29,7 +30,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- *          Clase Entity de tipo (Empresa) que representa un registro de
+ *          Clase Entity de tipo (Producto) que representa un registro de
  *          la BD. Cada instancia de esta entidad representa un registro de la
  *          BD. Cada atributo representa una columna de la BD. Los métodos de
  *          esta clase se usan para manipular los datos. (Anotación @Data)
@@ -44,9 +45,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "empresa", schema = "public")
+@Table(name = "producto", schema = "public")
 @EntityListeners(AuditingEntityListener.class)
-public class EmpresaEntity implements Serializable{
+public class ProductoEntity implements Serializable {
 
 	public static final long serialVersionUID = 1L;
 
@@ -56,33 +57,25 @@ public class EmpresaEntity implements Serializable{
 	@Column(name = "id")
 	private Integer id;
 	
-	@JoinColumn(name = "id_usuario", referencedColumnName = "id")
-	@OneToOne(fetch = FetchType.LAZY)
-	private UsuarioEntity usuario;
+	@JoinColumn(name = "id_empresa", referencedColumnName = "id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	private EmpresaEntity empresa;
 	
-	@JoinColumn(name = "id_estado", referencedColumnName = "id")
+	@JoinColumn(name = "id_categoria", referencedColumnName = "id")
 	@OneToOne(fetch = FetchType.LAZY)
-	private ParametrosGeneralesEntity estado;
+	private CategoriaProductoEntity categoria;
 	
-	@JoinColumn(name = "id_direccion", referencedColumnName = "id")
-	@OneToOne(fetch = FetchType.LAZY)
-	private DireccionEntity direccion;
+	@Basic(optional = true)
+	@Column(name = "codigo")
+	private String codigo;
 	
 	@Basic(optional = false)
 	@Column(name = "nombre")
 	private String nombre;
 	
-	@Basic(optional = false)
-	@Column(name = "nit")
-	private String nit;
-	
-	@Basic(optional = false)
-	@Column(name = "codigo")
-	private String codigo;
-	
 	@Basic(optional = true)
-	@Column(name = "imagen")
-	private byte[] imagen;
+	@Column(name = "descripcion")
+	private String descripcion;
 	
 	@Basic(optional = false)
 	@Column(name = "activo",nullable = false)

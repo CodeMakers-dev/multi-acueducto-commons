@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- * Clase DTO que permite encapsular los datos de un objeto de tipo (TipoContadorEntity).
+ * Clase DTO que permite encapsular los datos de un objeto de tipo (TipoCuentaContableEntity).
  * Este DTO tiene varias ventajas como: 
  * Bajo acoplamiento entre las capaz de la aplicación
  * Optimización de la transferencia de datos.
