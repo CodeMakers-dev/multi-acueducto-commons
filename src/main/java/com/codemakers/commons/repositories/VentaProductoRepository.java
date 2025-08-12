@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.codemakers.commons.entities.InventarioEntity;
+import com.codemakers.commons.entities.VentaProductoEntity;
 
 /**
  * @author nicope
@@ -14,7 +14,7 @@ import com.codemakers.commons.entities.InventarioEntity;
  */
 
 @Repository
-public interface InventarioRepository extends JpaRepository<InventarioEntity, Integer> {
+public interface VentaProductoRepository extends JpaRepository<VentaProductoEntity, Integer> {
 
-	List<InventarioEntity> findByProducto_Empresa_Id(Integer idEmpresa);
+	List<VentaProductoEntity> findByVenta_Id(Integer idVenta);
 }

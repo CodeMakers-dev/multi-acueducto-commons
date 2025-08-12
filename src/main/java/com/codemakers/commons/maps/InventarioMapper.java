@@ -9,6 +9,7 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.codemakers.commons.dtos.InventarioDTO;
+import com.codemakers.commons.dtos.InventarioResponseDTO;
 import com.codemakers.commons.entities.InventarioEntity;
 
 /**
@@ -37,4 +38,11 @@ public interface InventarioMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "producto", ignore = true)
     void updateEntityFromDto(InventarioDTO dto, @MappingTarget InventarioEntity entity);
+    
+    @Mapping(target = "productoId", source = "producto.id")
+    @Mapping(target = "codigo", source = "producto.codigo")
+    @Mapping(target = "nombre", source = "producto.nombre")
+    InventarioResponseDTO entityToResponseDto(InventarioEntity entity);
+
+    List<InventarioResponseDTO> listEntityToResponseDtoList(List<InventarioEntity> list);
 }

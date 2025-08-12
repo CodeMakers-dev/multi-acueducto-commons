@@ -18,6 +18,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -29,7 +30,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- *          Clase Entity de tipo (Venta) que representa un registro de
+ *          Clase Entity de tipo (VentaProducto) que representa un registro de
  *          la BD. Cada instancia de esta entidad representa un registro de la
  *          BD. Cada atributo representa una columna de la BD. Los métodos de
  *          esta clase se usan para manipular los datos. (Anotación @Data)
@@ -44,9 +45,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "venta", schema = "public")
+@Table(name = "venta_producto", schema = "public")
 @EntityListeners(AuditingEntityListener.class)
-public class VentaEntity implements Serializable {
+public class VentaProductoEntity implements Serializable {
 
 	public static final long serialVersionUID = 1L;
 
@@ -56,33 +57,21 @@ public class VentaEntity implements Serializable {
 	@Column(name = "id")
 	private Integer id;
 	
-	@JoinColumn(name = "id_empresa", referencedColumnName = "id")
-	@OneToOne(fetch = FetchType.LAZY)
-	private EmpresaEntity empresa;
+	@JoinColumn(name = "id_venta", referencedColumnName = "id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	private VentaEntity venta;
 	
-	@JoinColumn(name = "id_cliente", referencedColumnName = "id")
+	@JoinColumn(name = "id_producto", referencedColumnName = "id")
 	@OneToOne(fetch = FetchType.LAZY)
-	private PersonaEntity cliente;
+	private ProductoEntity producto;
 	
 	@Basic(optional = false)
-	@Column(name = "codigo")
-	private String codigo;
+	@Column(name = "nombre")
+	private String nombre;
 	
 	@Basic(optional = false)
 	@Column(name = "cantidad")
 	private Integer cantidad;
-	
-	@Basic(optional = true)
-	@Column(name = "nombre")
-	private String nombre;
-	
-	@Basic(optional = true)
-	@Column(name = "identificacion")
-	private String identificacion;
-	
-	@Basic(optional = false)
-	@Column(name = "precio_venta")
-	private Double precioVenta;
 	
 	@Basic(optional = false)
 	@Column(name = "valor_total")

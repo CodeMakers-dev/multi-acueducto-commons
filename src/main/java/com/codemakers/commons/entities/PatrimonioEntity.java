@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
  * @author nicope
  * @version 1.0
  * 
- *          Clase Entity de tipo (Venta) que representa un registro de
+ *          Clase Entity de tipo (Patrimonio) que representa un registro de
  *          la BD. Cada instancia de esta entidad representa un registro de la
  *          BD. Cada atributo representa una columna de la BD. Los métodos de
  *          esta clase se usan para manipular los datos. (Anotación @Data)
@@ -44,9 +44,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "venta", schema = "public")
+@Table(name = "patrimonio", schema = "public")
 @EntityListeners(AuditingEntityListener.class)
-public class VentaEntity implements Serializable {
+public class PatrimonioEntity implements Serializable {
 
 	public static final long serialVersionUID = 1L;
 
@@ -60,33 +60,9 @@ public class VentaEntity implements Serializable {
 	@OneToOne(fetch = FetchType.LAZY)
 	private EmpresaEntity empresa;
 	
-	@JoinColumn(name = "id_cliente", referencedColumnName = "id")
-	@OneToOne(fetch = FetchType.LAZY)
-	private PersonaEntity cliente;
-	
-	@Basic(optional = false)
-	@Column(name = "codigo")
-	private String codigo;
-	
-	@Basic(optional = false)
-	@Column(name = "cantidad")
-	private Integer cantidad;
-	
-	@Basic(optional = true)
-	@Column(name = "nombre")
-	private String nombre;
-	
-	@Basic(optional = true)
-	@Column(name = "identificacion")
-	private String identificacion;
-	
-	@Basic(optional = false)
-	@Column(name = "precio_venta")
-	private Double precioVenta;
-	
 	@Basic(optional = false)
 	@Column(name = "valor_total")
-	private Double valorTotal;
+	private Double valor;
 	
 	@Basic(optional = true)
 	@Column(name = "descripcion")
