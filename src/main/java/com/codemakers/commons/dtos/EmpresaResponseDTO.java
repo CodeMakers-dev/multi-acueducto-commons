@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class EmpresaResponseDTO implements Serializable {
+	
+	public static final long serialVersionUID = 1L;
 
     private Integer id;
     private String nombre;
