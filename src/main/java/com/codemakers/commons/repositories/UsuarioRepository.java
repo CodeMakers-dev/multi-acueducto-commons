@@ -16,6 +16,7 @@ import com.codemakers.commons.entities.UsuarioEntity;
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Integer>{
 
+	Optional<UsuarioEntity> findByNombreAndContrasena(String nombre, String contrasena);
 	Optional<UsuarioEntity> findByNombre(String nombre);
 	boolean existsByNombre(String nombre);
 	Optional<UsuarioEntity> findByPersonaId(Integer personaId);
