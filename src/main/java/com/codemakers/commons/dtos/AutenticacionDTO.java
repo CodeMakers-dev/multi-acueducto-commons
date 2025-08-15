@@ -17,7 +17,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AutenticacionDTO {
 
-	private String nombre;
-    private String contrasena;
+	private Integer id;
+    private String nombre;
+    private String token;
+    private Integer rolId;
+    private Integer personaId;
     
 }

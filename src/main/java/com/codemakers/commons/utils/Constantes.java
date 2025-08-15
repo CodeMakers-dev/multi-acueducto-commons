@@ -40,7 +40,7 @@ public class Constantes {
 	public static final String INTERNAL_SERVER_ERROR = "Error interno del servidor";
 	public static final String DUPLICATE_PHONE_NUMBER_ERROR = "numero de telefono ya existe";
 	public static final String ABONO_NOT_EXIST = "el abono no existe.";
-	public static final String BEARER = "Bearer";
+	public static final String BEARER = "Bearer ";
 	public static final String CLIENT_NOT_EXIST = "el Cliente Novedad no existe.";
 	public static final String CLIENT_NOT_FOUND = "Cliente no encontrado";
 	public static final String COUND_NOT_FOUND = "Tipo de contador no encontrado";
@@ -71,11 +71,16 @@ public class Constantes {
 	public static final String MAYOR_VALUE = "El valor del abono no puede ser mayor al valor de la deuda";
 	
 	
+	public static final String AUTHENTICATION_SUCCESSFUL = "Se realizo la autenticación exitosamente";
+	public static final String PLEASE_VERIFY_INCORRECT_DATA = " Por favor verificar datos incorrectos";
+	public static final String USER_ROLE_NOT_FOUND = "Rol de usuario no encontrado";
 	
+	public static final String KEY_TOKEN = "KEY_TOKEN";
+	public static final String TIEMPO_VIGENCIA_TOKEN = "TIEMPO_VIGENCIA_TOKEN";
 	
+	public static final String TOKEN_NO_EXIST_NOT_GENERATED_SYSTEM = "Token no existente, no lo generó el sistema";
 	
-	
-	
+	public static final String DATA_VALIDATION_MESSAGE = " Por favor validar datos faltantes";
 	
 	
 	
